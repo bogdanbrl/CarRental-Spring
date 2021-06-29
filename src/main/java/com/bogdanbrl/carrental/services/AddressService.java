@@ -33,9 +33,8 @@ public class AddressService {
 
     public void add(Address address, User principalUser){
         try {
-            addressRepository.save(address);
             principalUser.addAddress(address);
-            userRepository.save(principalUser);
+            addressRepository.save(address);
         } catch (Exception e) {
             throw new RuntimeException("Cannot add address " + e.getMessage());
         }

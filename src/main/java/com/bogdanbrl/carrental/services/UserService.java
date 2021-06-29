@@ -54,7 +54,6 @@ public class UserService {
     public User getUserByUsername(String username){
         Optional<User> userOptional = userRepository.findByUsername(username);
         User user = userOptional.orElseThrow(() -> new RuntimeException("User not found"));
-        user.setPassword("");
         return user;
 
     }
