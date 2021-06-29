@@ -28,8 +28,7 @@ public class Car {
     @Enumerated(EnumType.STRING)
     private ECarEngine engine;
 
-    @Lob
-    private Byte[] image;
+    private String image;
 
     @ManyToOne(optional = false, cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private CarOptions carOptions;
@@ -43,7 +42,7 @@ public class Car {
 
     public Car(String brand, String model, Integer year, Double rentPrice,
                ECarBody carBody, ECarClass carClass, ECarEngine engine,
-               Byte[] image, CarOptions carOptions) {
+               String image, CarOptions carOptions) {
         this.brand = brand;
         this.model = model;
         this.year = year;
@@ -119,11 +118,11 @@ public class Car {
         this.engine = engine;
     }
 
-    public Byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

@@ -15,7 +15,7 @@ public class CarDTO {
     private String carBody;
     private String carClass;
     private String engine;
-    private Byte[] image;
+    private String image;
     private CarOptions carOptions;
     private Set<Rent> rents = new HashSet<>();
 
@@ -83,11 +83,11 @@ public class CarDTO {
         this.engine = engine;
     }
 
-    public Byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
