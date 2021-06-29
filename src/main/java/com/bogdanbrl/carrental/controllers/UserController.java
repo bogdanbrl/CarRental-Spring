@@ -49,12 +49,22 @@ public class UserController {
         }
     }
 
-    @PutMapping("editAddress")
+    @PostMapping("editAddress")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity updateAddress(@RequestBody Address address){
         try {
             addressService.edit(address);
             return ResponseEntity.ok("Address updated!");
+        } catch (Exception e) {
+            return new ResponseEntity(e.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("getAddress/{addressID}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ResponseEntity getAddressByID(@PathVariable Long addressID){
+        try {
+            return ResponseEntity.ok(addressService.getAddressById(addressID));
         } catch (Exception e) {
             return new ResponseEntity(e.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -80,7 +90,7 @@ public class UserController {
         }
     }
 
-    @PutMapping("user")
+    @PostMapping("editUser")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity editUser(@RequestBody User user){
         try {
