@@ -42,9 +42,6 @@ public class CarController {
     @PostMapping("car")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity addCar(@RequestBody CarDTO carDTO) {
-
-        System.out.println(carDTO);
-
         try {
             carService.add(carDTO);
             return ResponseEntity.ok("Car added!");
