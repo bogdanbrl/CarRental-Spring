@@ -11,8 +11,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-//@CrossOrigin(origins = "*", maxAge = 3600)
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(origins = "*", maxAge = 3600)
+//@CrossOrigin("http://localhost:4200")
 public class CarController {
 
     private CarService carService;

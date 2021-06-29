@@ -106,4 +106,21 @@ public class CarDTO {
     public void setRents(Set<Rent> rents) {
         this.rents = rents;
     }
+
+    @Override
+    public String toString() {
+        return "CarDTO{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                ", rentPrice=" + rentPrice +
+                ", carBody='" + carBody + '\'' +
+                ", carClass='" + carClass + '\'' +
+                ", engine='" + engine + '\'' +
+                ", image='" + image + '\'' +
+                ", carOptions=" + carOptions +
+                ", rents=" + rents +
+                '}';
+    }
 }

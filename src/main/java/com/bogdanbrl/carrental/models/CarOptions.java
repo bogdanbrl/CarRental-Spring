@@ -56,4 +56,14 @@ public class CarOptions {
     public Set<Car> getCar() {
         return car;
     }
+
+    @Override
+    public String toString() {
+        return "CarOptions{" +
+                "id=" + id +
+                ", hasHeatedSeats=" + hasHeatedSeats +
+                ", hasNavigation=" + hasNavigation +
+                ", car=" + car +
+                '}';
+    }
 }
