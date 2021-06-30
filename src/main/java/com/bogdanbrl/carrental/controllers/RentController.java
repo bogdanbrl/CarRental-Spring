@@ -94,11 +94,6 @@ public class RentController {
     public ResponseEntity rentCar(@Param(value = "startPeriod") String startPeriod,
                                   @Param(value = "endPeriod") String endPeriod,
                                   @Param(value = "carID") Long carID){
-
-        System.out.println("startPeriod = " + startPeriod);
-        System.out.println("endPeriod = " + endPeriod);
-        System.out.println("carID = " + carID);
-
         try {
             String message = rentService.rentCar(startPeriod, endPeriod, carID, getPrincipalUser());
             return ResponseEntity.ok(message);
