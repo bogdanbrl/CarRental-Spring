@@ -19,7 +19,7 @@ public class CarOptions {
 
     @OneToMany(mappedBy = "carOptions")
     @JsonBackReference
-    private final Set<Car> car = new HashSet<>();
+    private final Set<Car> cars = new HashSet<>();
 
     public CarOptions() {
     }
@@ -53,8 +53,8 @@ public class CarOptions {
         this.hasNavigation = hasNavigation;
     }
 
-    public Set<Car> getCar() {
-        return car;
+    public Set<Car> getCars() {
+        return cars;
     }
 
     @Override
@@ -63,7 +63,7 @@ public class CarOptions {
                 "id=" + id +
                 ", hasHeatedSeats=" + hasHeatedSeats +
                 ", hasNavigation=" + hasNavigation +
-                ", car=" + car +
+                ", car=" + cars +
                 '}';
     }
 }

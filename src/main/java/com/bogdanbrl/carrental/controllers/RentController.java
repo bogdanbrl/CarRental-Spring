@@ -47,12 +47,11 @@ public class RentController {
         }
     }
 
-    @GetMapping("car/history")
+    @GetMapping("car/history/{carID}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity carHistory(@RequestBody CarDTO carDTO){
+    public ResponseEntity carHistory(@PathVariable Long carID){
         try {
-
-            Car car = carService.getCarByIdFromDB(carDTO.getId());
+            Car car = carService.getCarByIdFromDB(carID);
             return ResponseEntity.ok(rentService.getCarHistory(car));
         } catch (Exception e) {
             return new ResponseEntity<Object>(e.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -90,11 +89,16 @@ public class RentController {
         }
     }
 
-    @PostMapping("rentCar")
+    @GetMapping("rentCar")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity rentCar(@Param(value = "startPeriod") String startPeriod,
                                   @Param(value = "endPeriod") String endPeriod,
                                   @Param(value = "carID") Long carID){
+
+        System.out.println("startPeriod = " + startPeriod);
+        System.out.println("endPeriod = " + endPeriod);
+        System.out.println("carID = " + carID);
+
         try {
             String message = rentService.rentCar(startPeriod, endPeriod, carID, getPrincipalUser());
             return ResponseEntity.ok(message);

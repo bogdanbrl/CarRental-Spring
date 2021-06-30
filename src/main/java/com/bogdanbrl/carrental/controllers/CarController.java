@@ -50,7 +50,7 @@ public class CarController {
         }
     }
 
-    @PutMapping("car")
+    @PostMapping("editCar")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity editCar(@RequestBody CarDTO carDTO) {
         try {
@@ -61,7 +61,7 @@ public class CarController {
         }
     }
 
-    @DeleteMapping("car")
+    @PostMapping("deleteCar")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity deleteCar(@RequestBody CarDTO carDTO) {
         try {
