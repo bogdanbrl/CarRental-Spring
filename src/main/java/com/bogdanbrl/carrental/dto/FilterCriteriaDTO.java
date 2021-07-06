@@ -102,4 +102,21 @@ public class FilterCriteriaDTO {
     public void setEndRent(String endRent) {
         this.endRent = endRent;
     }
+
+    @Override
+    public String toString() {
+        return "FilterCriteriaDTO{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", year='" + year + '\'' +
+                ", rentPrice='" + rentPrice + '\'' +
+                ", carBody='" + carBody + '\'' +
+                ", carClass='" + carClass + '\'' +
+                ", engine='" + engine + '\'' +
+                ", heatedSeats='" + heatedSeats + '\'' +
+                ", navigation='" + navigation + '\'' +
+                ", startRent='" + startRent + '\'' +
+                ", endRent='" + endRent + '\'' +
+                '}';
+    }
 }
