@@ -88,7 +88,7 @@ public class RentController {
         }
     }
 
-    @GetMapping("rentCar")
+    @PostMapping("rentCar")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity rentCar(@Param(value = "startPeriod") String startPeriod,
                                   @Param(value = "endPeriod") String endPeriod,

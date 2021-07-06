@@ -115,6 +115,14 @@ public class CarService {
             Car car = CarDTOtoCarConvertor.convertCarDTOtoCar(carDTO);
 
             Car carDB = getCarByIdFromDB(car.getId());
+            carDB.setBrand(car.getBrand());
+            carDB.setModel(car.getModel());
+            carDB.setYear(car.getYear());
+            carDB.setRentPrice(car.getRentPrice());
+            carDB.setImage(car.getImage());
+            carDB.setCarBody(car.getCarBody());
+            carDB.setCarClass(car.getCarClass());
+            carDB.setEngine(car.getEngine());
 
             car.setCarOptions(carOptionsDB.get());
             carRepository.save(carDB);
@@ -158,5 +166,9 @@ public class CarService {
             engines.add(engine.getName());
         }
         return engines;
+    }
+
+    public void deleteById(Long carId) {
+        carRepository.deleteById(carId);
     }
 }

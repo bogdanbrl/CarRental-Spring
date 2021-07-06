@@ -50,7 +50,7 @@ public class CarController {
         }
     }
 
-    @PostMapping("editCar")
+    @PutMapping("editCar")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity editCar(@RequestBody CarDTO carDTO) {
         try {
@@ -61,11 +61,11 @@ public class CarController {
         }
     }
 
-    @PostMapping("deleteCar")
+    @DeleteMapping("deleteCar/{carId}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity deleteCar(@RequestBody CarDTO carDTO) {
+    public ResponseEntity deleteCar(@PathVariable Long carId) {
         try {
-            carService.delete(carDTO);
+//            carService.deleteById(carId);
             return ResponseEntity.ok("Car deleted!");
         } catch (RuntimeException e) {
             return new ResponseEntity<Object>(e.getMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST);
