@@ -106,13 +106,11 @@ public class RentController {
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity rentCar(@RequestBody RentDetailsDto rentDetailsDto){
         try {
-            System.out.println("try din rent");
             String message = rentService.rentCar(rentDetailsDto.getStartPeriod(), rentDetailsDto.getEndPeriod(),
                     rentDetailsDto.getCarId(), getPrincipalUser());
             return ResponseEntity.ok(message);
         } catch (Exception e) {
-           // return new ResponseEntity(e.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
-            return ResponseEntity.ok(e.getMessage());
+            return new ResponseEntity(e.getMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST);
         }
     }
 }
