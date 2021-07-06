@@ -1,6 +1,5 @@
 package com.bogdanbrl.carrental.controllers;
 
-import com.bogdanbrl.carrental.dto.CarDTO;
 import com.bogdanbrl.carrental.models.Car;
 import com.bogdanbrl.carrental.models.User;
 import com.bogdanbrl.carrental.services.CarService;
