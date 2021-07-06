@@ -38,10 +38,11 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("deleteAddress")
+    @DeleteMapping("deleteAddress/{addressId}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity deleteAddress(@RequestBody Address address){
+    public ResponseEntity deleteAddress(@PathVariable("addressId") Long addressId){
         try {
+            Address address = addressService.getAddressById(addressId);
             addressService.delete(address, getPrincipalUser());
             return ResponseEntity.ok("Address deleted!");
         } catch (Exception e) {
