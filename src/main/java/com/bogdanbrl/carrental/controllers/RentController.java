@@ -35,16 +35,16 @@ public class RentController {
         return userService.getUserByUsername(principalName);
     }
 
-    @GetMapping("user/history")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity userHistory(){
-        try {
-            User user = getPrincipalUser();
-            return ResponseEntity.ok(rentService.getUserHistory(user));
-        } catch (Exception e) {
-            return new ResponseEntity<Object>(e.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    @GetMapping("user/history")
+//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+//    public ResponseEntity userHistory(){
+//        try {
+//            User user = getPrincipalUser();
+//            return ResponseEntity.ok(rentService.getUserHistory(user));
+//        } catch (Exception e) {
+//            return new ResponseEntity<Object>(e.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
     @GetMapping("car/history/{carID}")
     @PreAuthorize("hasRole('ADMIN')")
@@ -57,7 +57,7 @@ public class RentController {
         }
     }
 
-    @GetMapping("rents")
+    @GetMapping("rent/rents")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity rents (){
         try {
@@ -67,7 +67,7 @@ public class RentController {
         }
     }
 
-    @GetMapping("currentRents")
+    @GetMapping("rent/current")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity currentRents(){
         try {
@@ -77,7 +77,7 @@ public class RentController {
         }
     }
 
-    @GetMapping("rentsByPeriod")
+    @GetMapping("rent/getByPeriod")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity getRentsByPeriod(@Param(value = "startPeriod") String startPeriod,
                                            @Param(value = "endPeriod") String endPeriod){
@@ -88,7 +88,7 @@ public class RentController {
         }
     }
 
-    @PostMapping("rentCar")
+    @PostMapping("rent/car")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity rentCar(@Param(value = "startPeriod") String startPeriod,
                                   @Param(value = "endPeriod") String endPeriod,

@@ -27,7 +27,7 @@ public class UserController {
         this.rentRepository = rentRepository;
     }
 
-    @PostMapping("address")
+    @PostMapping("address/add")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity addAddress(@RequestBody Address address){
         try {
@@ -38,7 +38,7 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("deleteAddress/{addressId}")
+    @DeleteMapping("address/delete/{addressId}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity deleteAddress(@PathVariable("addressId") Long addressId){
         try {
@@ -50,7 +50,7 @@ public class UserController {
         }
     }
 
-    @PutMapping("editAddress")
+    @PutMapping("address/edit")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity updateAddress(@RequestBody Address address){
         try {
@@ -61,7 +61,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("getAddress/{addressID}")
+    @GetMapping("address/getById/{addressID}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity getAddressByID(@PathVariable Long addressID){
         try {
@@ -71,7 +71,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("users")
+    @GetMapping("user/get")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity getUsers(){
         try {
@@ -81,7 +81,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("user/{userID}")
+    @GetMapping("user/getById/{userID}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity getUserById(@PathVariable Long userID){
         try {
@@ -91,7 +91,7 @@ public class UserController {
         }
     }
 
-    @PutMapping("editUser")
+    @PutMapping("user/edit")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity editUser(@RequestBody User user){
         try {
@@ -102,7 +102,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("user")
+    @GetMapping("user/principal")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity getUserByPrincipal(){
         try {
@@ -112,7 +112,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("history/user/{userID}")
+    @GetMapping("user/historyById/{userID}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity getUserHistory(@PathVariable Long userID){
         try {
@@ -122,7 +122,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("history/user")
+    @GetMapping("user/history")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity getUserHistory(){
         try {
@@ -132,7 +132,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("userDetails")
+    @GetMapping("user/details")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity getUserDetails(){
         try {

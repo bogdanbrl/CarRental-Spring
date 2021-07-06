@@ -21,7 +21,7 @@ public class CarController {
         this.carService = carService;
     }
 
-    @PostMapping("cars")
+    @PostMapping("car/get")
     public ResponseEntity getCars(@RequestBody FilterCriteriaDTO filterCriteriaDTO) {
         try {
             return ResponseEntity.ok(carService.getCars(filterCriteriaDTO));
@@ -30,7 +30,7 @@ public class CarController {
         }
     }
 
-    @GetMapping("searchCars")
+    @GetMapping("car/search")
     public ResponseEntity searchCarsByBrandOrModel(@Param(value = "searchValue") String searchValue) {
         try {
             return ResponseEntity.ok(carService.searchCarsByBrandOrModel(searchValue, searchValue));
@@ -39,7 +39,7 @@ public class CarController {
         }
     }
 
-    @PostMapping("car")
+    @PostMapping("car/add")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity addCar(@RequestBody CarDTO carDTO) {
         try {
@@ -50,7 +50,7 @@ public class CarController {
         }
     }
 
-    @PutMapping("editCar")
+    @PutMapping("car/edit")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity editCar(@RequestBody CarDTO carDTO) {
         try {
@@ -61,7 +61,7 @@ public class CarController {
         }
     }
 
-    @DeleteMapping("deleteCar/{carId}")
+    @DeleteMapping("car/delete/{carId}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity deleteCar(@PathVariable Long carId) {
         try {
@@ -72,7 +72,7 @@ public class CarController {
         }
     }
 
-    @GetMapping("carDetails/{carId}")
+    @GetMapping("car/details/{carId}")
     public ResponseEntity getCarById(@PathVariable Long carId) {
         try {
             return ResponseEntity.ok(carService.getCarById(carId));
@@ -81,7 +81,7 @@ public class CarController {
         }
     }
 
-    @GetMapping("carBodies")
+    @GetMapping("car/bodies")
     public ResponseEntity getCarBodies() {
         try {
             return ResponseEntity.ok(carService.getCarBodies());
@@ -91,7 +91,7 @@ public class CarController {
 
     }
 
-    @GetMapping("carClasses")
+    @GetMapping("car/classes")
     public ResponseEntity getCarClasses() {
         try {
             return ResponseEntity.ok(carService.getCarClasses());
@@ -100,7 +100,7 @@ public class CarController {
         }
     }
 
-    @GetMapping("engines")
+    @GetMapping("car/engines")
     public ResponseEntity getEngines() {
         try {
             return ResponseEntity.ok(carService.getEngines());
