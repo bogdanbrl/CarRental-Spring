@@ -38,7 +38,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("deleteAddress")
+    @DeleteMapping("deleteAddress")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity deleteAddress(@RequestBody Address address){
         try {
@@ -49,7 +49,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("editAddress")
+    @PutMapping("editAddress")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity updateAddress(@RequestBody Address address){
         try {
@@ -90,7 +90,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("editUser")
+    @PutMapping("editUser")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity editUser(@RequestBody User user){
         try {
