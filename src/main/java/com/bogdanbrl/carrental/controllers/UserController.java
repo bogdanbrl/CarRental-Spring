@@ -55,14 +55,8 @@ public class UserController {
     public ResponseEntity updateAddress(@RequestBody Address address){
         try {
             addressService.edit(address);
-
-            System.out.println("trimis din try");
-
             return ResponseEntity.ok("Address updated!");
         } catch (Exception e) {
-
-            System.out.println("trimis din catch");
-
             return new ResponseEntity(e.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

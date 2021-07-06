@@ -1,5 +1,6 @@
 package com.bogdanbrl.carrental.controllers;
 
+import com.bogdanbrl.carrental.dto.RentDetailsDto;
 import com.bogdanbrl.carrental.models.Car;
 import com.bogdanbrl.carrental.models.User;
 import com.bogdanbrl.carrental.services.CarService;
@@ -88,16 +89,30 @@ public class RentController {
         }
     }
 
+//    @PostMapping("rent/car")
+//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+//    public ResponseEntity rentCar(@Param(value = "startPeriod") String startPeriod,
+//                                  @Param(value = "endPeriod") String endPeriod,
+//                                  @Param(value = "carID") Long carID){
+//        try {
+//            String message = rentService.rentCar(startPeriod, endPeriod, carID, getPrincipalUser());
+//            return ResponseEntity.ok(message);
+//        } catch (Exception e) {
+//            return new ResponseEntity(e.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+
     @PostMapping("rent/car")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity rentCar(@Param(value = "startPeriod") String startPeriod,
-                                  @Param(value = "endPeriod") String endPeriod,
-                                  @Param(value = "carID") Long carID){
+    public ResponseEntity rentCar(@RequestBody RentDetailsDto rentDetailsDto){
         try {
-            String message = rentService.rentCar(startPeriod, endPeriod, carID, getPrincipalUser());
+            System.out.println("try din rent");
+            String message = rentService.rentCar(rentDetailsDto.getStartPeriod(), rentDetailsDto.getEndPeriod(),
+                    rentDetailsDto.getCarId(), getPrincipalUser());
             return ResponseEntity.ok(message);
         } catch (Exception e) {
-            return new ResponseEntity(e.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+           // return new ResponseEntity(e.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return ResponseEntity.ok(e.getMessage());
         }
     }
 }
