@@ -42,12 +42,7 @@ public class AddressService {
 
     public void edit(Address address){
         try {
-            Address addressDB = getAddressById(address.getId());
-            addressDB.setStreet(address.getStreet());
-            addressDB.setStreetNumber(address.getStreetNumber());
-            addressDB.setCity(address.getCity());
-            addressDB.setCountry(address.getCountry());
-            addressRepository.save(addressDB);
+            addressRepository.save(address);
         } catch (Exception e) {
             throw new RuntimeException("Address cannot be updated " + e.getMessage());
         }
