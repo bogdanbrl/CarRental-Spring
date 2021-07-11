@@ -36,17 +36,6 @@ public class RentController {
         return userService.getUserByUsername(principalName);
     }
 
-//    @GetMapping("user/history")
-//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-//    public ResponseEntity userHistory(){
-//        try {
-//            User user = getPrincipalUser();
-//            return ResponseEntity.ok(rentService.getUserHistory(user));
-//        } catch (Exception e) {
-//            return new ResponseEntity<Object>(e.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
-
     @GetMapping("car/history/{carID}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity carHistory(@PathVariable Long carID){
@@ -88,19 +77,6 @@ public class RentController {
             return new ResponseEntity(e.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-//    @PostMapping("rent/car")
-//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-//    public ResponseEntity rentCar(@Param(value = "startPeriod") String startPeriod,
-//                                  @Param(value = "endPeriod") String endPeriod,
-//                                  @Param(value = "carID") Long carID){
-//        try {
-//            String message = rentService.rentCar(startPeriod, endPeriod, carID, getPrincipalUser());
-//            return ResponseEntity.ok(message);
-//        } catch (Exception e) {
-//            return new ResponseEntity(e.getMessage(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
 
     @PostMapping("rent/car")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
